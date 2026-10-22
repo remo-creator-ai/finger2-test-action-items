@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>회의 액션아이템 정리기</title>
+    <meta name="description" content="회의록을 붙여 넣으면 할 일 · 담당 · 기한을 뽑아 주는 업무 도구" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5eff'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap">
+        <span class="logo">✓</span>
+        <div>
+          <h1>회의 액션아이템 정리기</h1>
+          <p>회의록을 붙여 넣으면 <b>할 일 · 담당 · 기한</b>을 뽑아 줍니다. 비어 있는 담당 · 기한은 사람이 정합니다.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap grid">
+      <section class="card">
+        <div class="head">
+          <h2>1. 회의록</h2>
+          <button type="button" id="sample" class="btn ghost">샘플 회의록 넣기</button>
+        </div>
+        <label for="notes" class="sr">회의록</label>
+        <textarea
+          id="notes"
+          rows="14"
+          placeholder="예) - 견적서 초안 정리 @기획담당 10/25까지&#10;TODO: 고객 A사 회신 (담당: 영업 매니저, 기한: 10월 30일)"
+        ></textarea>
+        <div class="row">
+          <button type="button" id="run" class="btn">액션아이템 뽑기</button>
+          <button type="button" id="clear" class="btn ghost">지우기</button>
+        </div>
+        <p class="hint">입력한 내용은 이 브라우저 안에서만 처리되고 어디로도 보내지 않습니다.</p>
+      </section>
+
+      <section class="card">
+        <div class="head">
+          <h2>2. 액션아이템 <span id="count" class="pill">0</span></h2>
+          <button type="button" id="copy" class="btn ghost" disabled>메시지로 복사</button>
+        </div>
+        <p id="empty" class="empty">왼쪽에 회의록을 넣고 「액션아이템 뽑기」를 누르세요.</p>
+        <table id="table" hidden>
+          <thead>
+            <tr>
+              <th>확정</th>
+              <th>할 일</th>
+              <th>담당</th>
+              <th>기한</th>
+              <th>상태</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <p id="summary" class="summary" aria-live="polite"></p>
+        <pre id="message" class="message" hidden></pre>
+      </section>
+    </main>
+
+    <footer class="wrap foot">
+      핑거 AX 해커톤 2차 · 접수 흐름 점검용 테스트 프로젝트(TEST). 실제 메일 · 메신저 발송은 하지 않습니다.
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

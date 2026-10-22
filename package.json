@@ -1,0 +1,6 @@
+{
+  "name": "finger2-test-action-items",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test" }
+}
